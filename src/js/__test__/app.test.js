@@ -1,13 +1,12 @@
-﻿import ArrayBufferConverter from '../app.js';
+import ArrayBufferConverter from '../app';
 
 test('Строка', () => {
-  const buffer = new ArrayBufferConverter();
-  buffer.load('Строка текста');
-  expect(buffer.toString()).toBe('Строка текста');
+  const result = ArrayBufferConverter.load('Hello');
+  expect(result.byteLength).toEqual(10);
 });
 
 test('Объект в строке', () => {
-  const buffer = new ArrayBufferConverter();
-  buffer.load('{"data":{"user":{"id":1,"name":"Hitman","level":10}}}');
-  expect(buffer.toString()).toBe('{"data":{"user":{"id":1,"name":"Hitman","level":10}}}');
+  const array = ArrayBufferConverter.load('Hello');
+  const result = ArrayBufferConverter.toString(array);
+  expect(result).toEqual('Hello');
 });
